@@ -1,0 +1,31 @@
+package format_conversion.utils;
+
+import format_conversion.datamodel.Colour;
+
+public class Validations {
+
+	
+	public boolean validateColour(String input)
+	{
+		for (Colour colour : Colour.values()) {
+	        if (colour.name().equals(input)) {
+	            return true;
+	        }
+	    }
+		return false;
+	}
+	
+	public boolean validatePrize(String input)
+	{
+		String regex = "^([0-9]{0,2}((.)[0-9]{0,2}))";
+		System.out.println(input+ " MATCH : "+input.matches(regex) );
+		return input.matches(regex);
+	}
+	
+	public boolean validateSize(String input)
+	{
+		String regex = "[0-9]+";
+		System.out.println(input+ " MATCH : "+input.matches(regex) );
+		return input.matches(regex);
+	}
+}

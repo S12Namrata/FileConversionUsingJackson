@@ -1,0 +1,31 @@
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import format_conversion.services.ReadInputFile;
+
+public class TestFile {
+
+	@Test
+	public void testReadFile() {
+
+		//Given
+		String FileName = "InputFile.txt"
+		
+		//When
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileName);
+		
+		//Then
+		if (result != 120) {
+			throw new Exception("factorial returned a wrong value, expected 120, got :" +  result);
+		}
+		
+		System.out.println("if we got there, then no issue!");
+
+		fail("Not yet implemented");
+	}
+
+}

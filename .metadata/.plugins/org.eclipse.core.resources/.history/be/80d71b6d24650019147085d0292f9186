@@ -1,0 +1,148 @@
+package com.fr.fileConversion.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fr.fileConversion.datamodel.Colour;
+import com.fr.fileConversion.datamodel.Reference;
+import com.fr.fileConversion.datamodel.Report;
+import com.fr.fileConversion.utils.Validations;
+
+/**
+ * The Class FileToPOJO.
+ */
+public class FileToPOJO {
+
+	/**
+	 * Creates the report object.
+	 *
+	 * @param fileData the file data
+	 * @param fileName the file name
+	 * @return the report
+	 */
+	public Report createReportObject(List<String> fileData, String fileName)
+	{
+		String seperator = ";";
+		Boolean isError = Boolean.FALSE;
+
+		Validations validations = new Validations();
+
+		Report report = new Report(); // Creating report object
+		report.setInputFile(fileName); // Setting input file name
+
+		List<Reference> listOfReferences = new ArrayList<Reference>(); // Creating list of references
+		report.setReferences(listOfReferences); // setting list of references
+		List<Error> listOfErrors = new ArrayList<Error>(); // Creating list of errors
+		report.setErrors(listOfErrors); // setting list of errors
+
+		Reference ref;
+		Error er;
+
+		for (String line : fileData)
+		{
+			String[] inputs = line.split(seperator);
+
+			if(inputs != null && inputs.length == 4) 
+			{
+				isError = Boolean.FALSE;
+				ref = new Reference();
+				ref.setNumReference(inputs[0]);
+
+				/*
+				 * checking if Colour is valid; 
+				 * if valid: set in the reference object;
+				 * else create error for invalid colour found in line
+				 * 
+				 */
+				if(validations.validateColour(inputs[1]))
+				{
+					Colour colour = Colour.valueOf(inputs[1]);
+					ref.setColour(colour);
+				}
+				else {
+
+					er = new Error();
+					er.setLine(String.valueOf(fileData.indexOf(line)+1));
+					er.setMessage("Incorrect Value for Colour");
+					er.setValue(line);
+					listOfErrors.add(er);
+					isError = Boolean.TRUE;
+				}
+
+				/*
+				 * checking if Price is in correct format; 
+				 * if valid: set in the reference object;
+				 * else create error for invalid price format found in line
+				 * 
+				 */
+				if(validations.validatePrice(inputs[2]))
+				{
+					ref.setPrice(inputs[2]);
+				}
+				else {
+
+					er = new Error();
+					er.setLine(String.valueOf(fileData.indexOf(line)+1));
+					er.setMessage("Incorrect Value for Prize");
+					er.setValue(line);
+					listOfErrors.add(er);
+					isError = Boolean.TRUE;
+				}
+				
+				/*
+				 * checking if size is in correct format; 
+				 * if valid: set in the reference object;
+				 * else create error for invalid size format found in line
+				 * 
+				 */
+
+				if(validations.validateSize(inputs[3]))
+				{
+					ref.setSize(inputs[3]);
+				}
+				else {
+
+					er = new Error();
+					er.setLine(String.valueOf(fileData.indexOf(line)+1));
+					er.setMessage("Incorrect Value for Size");
+					er.setValue(line);
+					listOfErrors.add(er);
+					isError = Boolean.TRUE;
+				}
+
+				/*
+				 * if no error in line add reference to list of references 
+				 * 
+				 */
+				if(!isError)
+					listOfReferences.add(ref);
+			}	
+			else 
+			{
+				/* 
+				 * Error handling if seperator ";" missing  
+				 * OR
+				 * any if any data missing in line
+				 */
+				er = new Error();
+				er.setLine(String.valueOf(fileData.indexOf(line)+1));
+				er.setValue(line);
+				if(inputs == null)
+				{
+					er.setMessage("Missing seperator");
+				}
+				else if(inputs.length != 4)
+				{
+					er.setMessage("Data Missing");
+
+				}
+
+				listOfErrors.add(er);
+			}
+
+
+		}
+
+		return report;
+	}
+}

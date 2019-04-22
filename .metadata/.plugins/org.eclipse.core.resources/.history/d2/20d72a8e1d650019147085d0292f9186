@@ -1,0 +1,48 @@
+package format_conversion.launcher;
+
+import java.util.List;
+import java.util.Scanner;
+
+import format_conversion.datamodel.Report;
+import format_conversion.services.FileFormatConverter;
+import format_conversion.services.FileToPOJO;
+import format_conversion.services.ReadInputFile;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		String choice;
+		String fileName;
+		Scanner scanner = new Scanner(System.in);
+		
+		do
+		{
+			
+			System.out.println("*******************************************");
+			System.out.println("Welcome to File converter");
+			System.out.println("*******************************************");
+			System.out.println("\n1. Convert to XML");
+			System.out.println("\n2. Convert to JSON");
+			System.out.println("\n3. EXIT");
+			System.out.println("\n\nEnter your Choice : ");
+			scanner.reset();
+			choice = scanner.nextLine();
+		}
+		while(Integer.valueOf(choice)>3 || Integer.valueOf(choice)<1);
+
+		System.out.println("\n\nEnter Input File Name : ");
+		scanner.reset();
+		fileName = scanner.nextLine();
+		
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileName);
+		
+		FileToPOJO fileToPojo = new FileToPOJO();
+		Report report = fileToPojo.createReportObject(fileData, fileName);
+
+		FileFormatConverter converter = new FileFormatConverter(); 
+		converter.convertToXML(report,fileName);
+		converter.convertToJSON(report,fileName);
+	}
+
+}

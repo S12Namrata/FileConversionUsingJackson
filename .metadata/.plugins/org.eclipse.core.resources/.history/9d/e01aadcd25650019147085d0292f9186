@@ -1,0 +1,21 @@
+package format_conversion;
+
+import org.junit.Test;
+
+import com.fr.fileConversion.launcher.Launcher;
+
+
+public class TestFileConversion {
+	
+	@Test
+	public void testFileConversiontoXML()
+	{
+		String fileNameIn = "InputFile.txt";
+		String fileNameOut = "InputFile";
+		
+		Launcher launch = new Launcher();
+		
+		
+	}
+
+}

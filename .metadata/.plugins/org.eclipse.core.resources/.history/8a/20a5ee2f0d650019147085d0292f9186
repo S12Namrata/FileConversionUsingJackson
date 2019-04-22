@@ -1,0 +1,66 @@
+package format_conversion.datamodel;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@JsonPropertyOrder({"colour", "prize", "size","numReference"})
+public class Reference {
+	@JacksonXmlProperty(isAttribute = true)
+	Colour colour;
+	@JacksonXmlProperty(isAttribute = true)
+	Double prize;
+	@JacksonXmlProperty(isAttribute = true)
+	String size;
+	@JacksonXmlProperty(isAttribute = true)
+	String numReference;
+	/**
+	 * @return the colour
+	 */
+	public String getColour() {
+		return colour.getName();
+	}
+	/**
+	 * @return the prize
+	 */
+	public Double getPrize() {
+		return prize;
+	}
+	/**
+	 * @return the size
+	 */
+	public String getSize() {
+		return size;
+	}
+	/**
+	 * @return the numReference
+	 */
+	public String getNumReference() {
+		return numReference;
+	}
+	/**
+	 * @param colour the colour to set
+	 */
+	public void setColour(Colour colour) {
+		this.colour = colour;
+	}
+	/**
+	 * @param prize the prize to set
+	 */
+	public void setPrize(Double prize) {
+		this.prize = prize;
+	}
+	/**
+	 * @param size the size to set
+	 */
+	public void setSize(String size) {
+		this.size = size;
+	}
+	/**
+	 * @param numReference the numReference to set
+	 */
+	public void setNumReference(String numReference) {
+		this.numReference = numReference;
+	}
+	
+
+}

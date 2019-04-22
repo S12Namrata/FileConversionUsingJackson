@@ -1,0 +1,23 @@
+package format_conversion.services;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import format_conversion.datamodel.Report;
+
+public class TxtToJson {
+
+	public void convertToJSON(Report report) {
+		
+		ObjectMapper mapper = new ObjectMapper();
+
+	    try 
+	    {
+			String json = mapper.writeValueAsString(report);
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

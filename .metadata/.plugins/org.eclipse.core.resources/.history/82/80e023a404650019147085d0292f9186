@@ -1,0 +1,11 @@
+package format_conversion.datamodel;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@JsonPropertyOrder({"line", "message"})
+public class Error {
+	@JacksonXmlProperty(isAttribute = true)
+	
+
+}

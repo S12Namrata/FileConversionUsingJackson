@@ -1,0 +1,28 @@
+package format_conversion;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+
+
+import java.io.StringWriter;
+
+public class TxtToJson {
+
+	public static void main(String[] args) {
+		
+		String str = "abc|xyz|pqr";
+        String[] strSplit = str.split("|");
+        
+        XDocument xdoc = new XDocument();
+        XElement root = new XElement("Root");
+
+        foreach (var item in strsplit)
+        {
+            root.Add(new XElement("item", item));
+        }
+
+        xdoc.Add(root);
+	} 
+	
+}

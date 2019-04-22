@@ -1,0 +1,29 @@
+package format_conversion;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.Assert;
+
+import format_conversion.services.ReadInputFile;
+
+public class TestFile {
+
+	@Test
+	public void testReadFile() {
+
+		//Given
+		String FileName = "InputFile.txt"
+		
+		//When
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileName);
+		
+		//Then
+		Assert.assertNotNull(fileData);
+
+	}
+
+}

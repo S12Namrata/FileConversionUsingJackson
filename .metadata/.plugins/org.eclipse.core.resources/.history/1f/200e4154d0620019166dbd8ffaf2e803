@@ -1,0 +1,18 @@
+package format_conversion;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.FileData;
+
+public class TxtToJson {
+
+	public static void main(String[] args) {
+		FileData fd = new FileData();
+		fd.setColour("R");
+		fd.setPrize(12.45);
+		fd.setSize("27");
+		fd.setNumReference(14007484L);
+		XmlMapper xmlMapper = new XmlMapper();
+	    String xml = xmlMapper.writeValueAsString(fd);
+	}
+}

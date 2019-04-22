@@ -1,0 +1,72 @@
+package format_conversion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.Reference;
+import format_conversion.datamodel.Report;
+import format_conversion.datamodel.Error;
+
+public class TxtToJson {
+
+	public void convertToXML(List<String> fileData, String fileName) {
+		
+		String seperator = ";";
+		Report report = new Report();
+		report.setInputFile(fileName);
+		
+		List<Reference> listOfReferences = new ArrayList<Reference>();
+		report.setReferences(listOfReferences);
+		List<Error> listOfErrors = new ArrayList<Error>();
+		report.setErrors(listOfErrors);
+		
+		Reference ref;
+		Error er;
+		
+		for (String line : fileData) 
+		{
+			String[] inputs = line.split(seperator);
+			
+			if(inputs == null)
+			{
+				er = new Error();
+				er.setLine(String.valueOf(fileData.indexOf(line)));
+				er.setMessage("Missing seperator");
+				listOfErrors.add(er);
+			}
+			else if(inputs.length != 4)
+			{
+				er = new Error();
+				er.setLine(String.valueOf(fileData.indexOf(line)));
+				er.setMessage("Missing seperator");
+				listOfErrors.add(er);
+			}
+			ref = new Reference();
+			
+		}
+		
+		Reference fd = new Reference();
+		fd.setColour("R");
+		fd.setPrize(12.45);
+		fd.setSize("27");
+		fd.setNumReference(14007484L);
+		Report rp = new Report();
+		
+		lst.add(fd);
+		rp.setInputFile("text.txt");
+		rp.setReferences(lst);
+		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(rp);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

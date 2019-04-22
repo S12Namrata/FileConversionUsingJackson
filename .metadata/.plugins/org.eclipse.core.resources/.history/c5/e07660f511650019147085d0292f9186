@@ -1,0 +1,92 @@
+package format_conversion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.Reference;
+import format_conversion.datamodel.Report;
+import format_conversion.datamodel.Colour;
+import format_conversion.datamodel.Error;
+
+public class TxtToJson {
+
+	public void convertToXML(List<String> fileData, String fileName) {
+		
+		String seperator = ";";
+		Boolean isError = Boolean.FALSE;
+		Report report = new Report();
+		report.setInputFile(fileName);
+		
+		List<Reference> listOfReferences = new ArrayList<Reference>();
+		report.setReferences(listOfReferences);
+		List<Error> listOfErrors = new ArrayList<Error>();
+		report.setErrors(listOfErrors);
+		
+		Reference ref;
+		Error er;
+		
+		for (String line : fileData) 
+		{
+			String[] inputs = line.split(seperator);
+			
+			if(inputs != null && inputs.length == 4)
+			{
+				isError = Boolean.TRUE;
+				ref = new Reference();
+				ref.setNumReference(inputs[0]);
+				
+				for (Colour colour : Colour.values()) {
+			        if (colour.name().equals(inputs[1])) {
+			            ref.setColour(colour);
+			            isError = Boolean.FALSE;
+			            break;
+			        }
+			    }
+				ref.setPrize(inputs[2]);
+				ref.setSize(inputs[3]);
+				
+				if(!isError)
+					listOfReferences.add(ref);
+			}	
+			else 
+			{
+				er = new Error();
+				er.setLine(String.valueOf(fileData.indexOf(line)));
+				if(inputs == null)
+				{
+					er.setMessage("Missing seperator");
+				}
+				else if(inputs.length != 4)
+				{
+					er.setMessage("Data Missing");
+				}
+				
+				listOfErrors.add(er);
+			}
+			
+			if(isError)
+			{
+				er = new Error();
+				er.setLine(String.valueOf(fileData.indexOf(line)));
+				er.setMessage("Incorrect Value for Colour");
+				listOfErrors.add(er);
+			}
+			
+			
+		}
+
+		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(report);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

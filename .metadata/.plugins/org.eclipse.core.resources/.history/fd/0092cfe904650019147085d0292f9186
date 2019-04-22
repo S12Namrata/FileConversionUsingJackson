@@ -1,0 +1,30 @@
+package format_conversion;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.Reference;
+import format_conversion.datamodel.Report;
+
+public class TxtToJson {
+
+	public static void main(String[] args) {
+		Reference fd = new Reference();
+		fd.setColour("R");
+		fd.setPrize(12.45);
+		fd.setSize("27");
+		fd.setNumReference(14007484L);
+		Report rp = new Report();
+		List<Reference> lst = new ArrayList();
+		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(fd);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

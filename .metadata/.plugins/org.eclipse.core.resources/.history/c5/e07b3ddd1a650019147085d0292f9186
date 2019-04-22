@@ -1,0 +1,45 @@
+package format_conversion.launcher;
+
+import java.util.List;
+import java.util.Scanner;
+
+import format_conversion.TxtToXml;
+import format_conversion.services.FileFormatConverter;
+import format_conversion.services.ReadInputFile;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		String choice;
+		String fileName;
+		Scanner scanner = new Scanner(System.in);
+		
+		do
+		{
+			
+			System.out.println("*******************************************");
+			System.out.println("Welcome to File converter");
+			System.out.println("*******************************************");
+			System.out.println("\n1. Convert to XML");
+			System.out.println("\n2. Convert to JSON");
+			System.out.println("\n3. EXIT");
+			System.out.println("\n\nEnter your Choice : ");
+			scanner.reset();
+			choice = scanner.nextLine();
+		}
+		while("3".equals(choice));
+
+		System.out.println("\n\nEnter Input File Name : ");
+		scanner.reset();
+		fileName = scanner.nextLine();
+		
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileName);
+
+		FileFormatConverter converter = new FileFormatConverter(); 
+		converter.convertToXML(fileData, fileName);
+
+		converter.convertToJSON(fileData, fileName);
+	}
+
+}

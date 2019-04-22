@@ -1,0 +1,32 @@
+package format_conversion;
+
+import org.junit.Test;
+
+import com.fr.fileConversion.launcher.FileConverter;
+
+
+public class TestFileConversion {
+	
+	@Test
+	public void testFileConversiontoXML()
+	{
+		String fileNameIn = "InputFile.txt";
+		String fileNameOut = "InputFile.xml";
+		
+		FileConverter launch = new FileConverter();
+		launch.convertFile(fileNameIn, "xml", fileNameOut);
+		
+	}
+	
+	@Test
+	public void testFileConversiontoJSON()
+	{
+		String fileNameIn = "InputFile.txt";
+		String fileNameOut = "InputFile.json";
+		
+		FileConverter launch = new FileConverter();
+		launch.convertFile(fileNameIn, "json", fileNameOut);
+		
+	}
+
+}

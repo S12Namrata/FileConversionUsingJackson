@@ -1,0 +1,23 @@
+package format_conversion.utils;
+
+import format_conversion.datamodel.Colour;
+
+public class Validations {
+
+	
+	public boolean validateColour(String input)
+	{
+		for (Colour colour : Colour.values()) {
+	        if (colour.name().equals(input)) {
+	            return true;
+	        }
+	    }
+		return false;
+	}
+	
+	public boolean validatePrize(String input)
+	{
+		String[] price = input.split(".");
+		return input.length() == 2;
+	}
+}

@@ -1,0 +1,19 @@
+package format_conversion.services;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+public class TxtToXml {
+
+	public void convertToXML() {		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(report);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

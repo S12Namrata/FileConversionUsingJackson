@@ -1,0 +1,36 @@
+package format_conversion.services;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.Report;
+
+public class FileFormatConverter {
+	
+	public void convertToJSON(Report report) {
+		
+		ObjectMapper mapper = new ObjectMapper();
+
+	    try 
+	    {
+			String json = mapper.writeValueAsString(report);
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void convertToXML(Report report) {		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(report);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

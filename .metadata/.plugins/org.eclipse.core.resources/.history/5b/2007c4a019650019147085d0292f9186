@@ -1,0 +1,13 @@
+package format_conversion.Service;
+
+import java.util.List;
+
+import format_conversion.datamodel.Report;
+
+public class FileToPOJO {
+
+	public Report createReport(List<String> fileData, String fileName)
+	{
+		
+	}
+}

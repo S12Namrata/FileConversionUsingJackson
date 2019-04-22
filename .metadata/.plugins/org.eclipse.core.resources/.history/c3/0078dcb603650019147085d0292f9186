@@ -1,0 +1,6 @@
+package format_conversion.datamodel;
+
+public class Report {
+	String inputFile;
+
+}

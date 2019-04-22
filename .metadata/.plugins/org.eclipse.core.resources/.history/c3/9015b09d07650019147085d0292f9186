@@ -1,0 +1,27 @@
+package format_conversion.launcher;
+
+import java.util.Scanner;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		
+		do
+		{
+			Scanner scanner = new Scanner(System.in);
+			scanner.reset();
+			
+			System.out.println("*******************************************");
+			System.out.println("Welcome to File converter");
+			System.out.println("*******************************************");
+			System.out.println("\n1. Convert to XML");
+			System.out.println("\n2. Convert to JSON");
+			System.out.println("\n3. EXIT");
+			System.out.println("\n\nEnter your Choice : ");
+			String choice = scanner.nextLine();
+		}
+		while();
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package format_conversion.utils;
+
+public class Validations {
+
+	
+	public boolean validateColour(String input)
+	{
+		
+	}
+}

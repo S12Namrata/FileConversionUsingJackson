@@ -1,0 +1,46 @@
+package format_conversion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import format_conversion.datamodel.Reference;
+import format_conversion.datamodel.Report;
+
+public class TxtToJson {
+
+	public void convertToXML(List<String> fileData, String fileName) {
+		
+		Report report = new Report();
+		report.setInputFile(fileName);
+		
+		List<Reference> listOfReferences = new ArrayList<Reference>();
+		report.setReferences(listOfReferences);
+		List<Error> listOfErrors = new ArrayList<Error>();
+		report.setErrors(listOfErrors);
+		
+
+		Reference fd = new Reference();
+		fd.setColour("R");
+		fd.setPrize(12.45);
+		fd.setSize("27");
+		fd.setNumReference(14007484L);
+		Report rp = new Report();
+		
+		lst.add(fd);
+		rp.setInputFile("text.txt");
+		rp.setReferences(lst);
+		
+		XmlMapper xmlMapper = new XmlMapper();
+	    try 
+	    {
+			String xml = xmlMapper.writeValueAsString(rp);
+			System.out.println(xml);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

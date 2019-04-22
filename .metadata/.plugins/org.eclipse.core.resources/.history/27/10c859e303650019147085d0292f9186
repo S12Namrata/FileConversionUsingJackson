@@ -1,0 +1,10 @@
+package format_conversion.datamodel;
+
+import java.util.List;
+
+public class Report {
+	String inputFile;
+	List<Reference> references;
+	List<Error> errors;
+
+}

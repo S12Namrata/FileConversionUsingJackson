@@ -1,0 +1,30 @@
+package format_conversion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import format_conversion.datamodel.Colour;
+import format_conversion.datamodel.Error;
+import format_conversion.datamodel.Reference;
+import format_conversion.datamodel.Report;
+import format_conversion.utils.Validations;
+
+public class TxtToJson {
+
+	public void convertToJSON() {
+		
+		ObjectMapper mapper = new ObjectMapper();
+
+	    try 
+	    {
+			String json = mapper.writeValueAsString(report);
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

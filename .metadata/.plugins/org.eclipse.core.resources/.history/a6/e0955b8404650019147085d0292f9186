@@ -1,0 +1,49 @@
+package format_conversion.datamodel;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"colour", "prize", "size","numReference"})
+public class Report {
+	String inputFile;
+	List<Reference> references;
+	List<Error> errors;
+	/**
+	 * @return the inputFile
+	 */
+	public String getInputFile() {
+		return inputFile;
+	}
+	/**
+	 * @return the references
+	 */
+	public List<Reference> getReferences() {
+		return references;
+	}
+	/**
+	 * @return the errors
+	 */
+	public List<Error> getErrors() {
+		return errors;
+	}
+	/**
+	 * @param inputFile the inputFile to set
+	 */
+	public void setInputFile(String inputFile) {
+		this.inputFile = inputFile;
+	}
+	/**
+	 * @param references the references to set
+	 */
+	public void setReferences(List<Reference> references) {
+		this.references = references;
+	}
+	/**
+	 * @param errors the errors to set
+	 */
+	public void setErrors(List<Error> errors) {
+		this.errors = errors;
+	}
+
+}

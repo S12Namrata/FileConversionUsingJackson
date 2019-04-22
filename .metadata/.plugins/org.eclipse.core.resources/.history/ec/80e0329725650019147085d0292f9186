@@ -1,0 +1,25 @@
+package format_conversion;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.fr.fileConversion.services.ReadInputFile;
+
+import org.junit.Assert;
+
+
+public class TestFileConversion {
+	
+	@Test
+	public void testReadFile()
+	{
+		String fileName = "InputFile.txt";
+		
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileName);
+		
+		Assert.assertNotNull(fileData);
+	}
+
+}

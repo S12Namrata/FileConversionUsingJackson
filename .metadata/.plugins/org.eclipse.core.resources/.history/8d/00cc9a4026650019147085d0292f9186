@@ -1,0 +1,33 @@
+package com.fr.fileConversion.launcher;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.fr.fileConversion.datamodel.Report;
+import com.fr.fileConversion.services.FileFormatConverter;
+import com.fr.fileConversion.services.FileToPOJO;
+import com.fr.fileConversion.services.ReadInputFile;
+
+/**
+ * The Class Launcher.
+ */
+
+public class FileConverter {
+
+	public void convertFile(String fileNameIn, String format, String fileNameOut)
+	{
+		ReadInputFile rfile = new ReadInputFile();
+		List<String> fileData = rfile.readFile(fileNameIn);
+
+		FileToPOJO fileToPojo = new FileToPOJO();
+		Report report = fileToPojo.createReportObject(fileData, fileNameIn);
+
+		FileFormatConverter converter = new FileFormatConverter(); 
+
+		if("xml".equalsIgnoreCase(format))
+			converter.convertToXML(report,fileNameOut);
+		if("json".equalsIgnoreCase(format))
+			converter.convertToJSON(report,fileNameOut);
+	}
+
+}

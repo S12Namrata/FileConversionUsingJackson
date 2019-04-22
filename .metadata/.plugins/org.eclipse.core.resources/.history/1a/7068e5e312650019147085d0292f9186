@@ -1,0 +1,17 @@
+package format_conversion.utils;
+
+import format_conversion.datamodel.Colour;
+
+public class Validations {
+
+	
+	public boolean validateColour(String input)
+	{
+		for (Colour colour : Colour.values()) {
+	        if (colour.name().equals(input)) {
+	            ref.setColour(colour);
+	            break;
+	        }
+	    }
+	}
+}

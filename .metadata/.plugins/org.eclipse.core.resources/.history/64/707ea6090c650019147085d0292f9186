@@ -1,0 +1,17 @@
+package format_conversion.datamodel;
+
+public enum Colour {
+	R("R"), 
+    G("G"),
+    B("B");
+
+    private String name;
+
+    private ClassEnum(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

@@ -1,0 +1,46 @@
+package format_conversion.datamodel;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@JsonPropertyOrder({"line", "message"})
+public class Error {
+	@JacksonXmlProperty(isAttribute = true)
+	String line;
+	
+	@JacksonXmlProperty(isAttribute = true)
+	String message;
+	
+	@JacksonXmlText
+    private String note;
+
+	/**
+	 * @return the line
+	 */
+	public String getLine() {
+		return line;
+	}
+
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * @param line the line to set
+	 */
+	public void setLine(String line) {
+		this.line = line;
+	}
+
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+
+}

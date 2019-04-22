@@ -1,0 +1,62 @@
+package format_conversion.datamodel;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"colour", "prize", "size","numReference"})
+public class FileData {
+	
+	String colour;
+	Double prize;
+	String size;
+	Long numReference;
+	/**
+	 * @return the colour
+	 */
+	public String getColour() {
+		return colour;
+	}
+	/**
+	 * @return the prize
+	 */
+	public Double getPrize() {
+		return prize;
+	}
+	/**
+	 * @return the size
+	 */
+	public String getSize() {
+		return size;
+	}
+	/**
+	 * @return the numReference
+	 */
+	public Long getNumReference() {
+		return numReference;
+	}
+	/**
+	 * @param colour the colour to set
+	 */
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+	/**
+	 * @param prize the prize to set
+	 */
+	public void setPrize(Double prize) {
+		this.prize = prize;
+	}
+	/**
+	 * @param size the size to set
+	 */
+	public void setSize(String size) {
+		this.size = size;
+	}
+	/**
+	 * @param numReference the numReference to set
+	 */
+	public void setNumReference(Long numReference) {
+		this.numReference = numReference;
+	}
+	
+
+}

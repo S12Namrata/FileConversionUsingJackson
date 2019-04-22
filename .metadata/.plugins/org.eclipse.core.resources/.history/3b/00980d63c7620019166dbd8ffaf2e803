@@ -1,0 +1,14 @@
+package format_conversion;
+
+import java.io.StringWriter;
+
+public class TxtToJson {
+
+	public static void main(String[] args) {
+		
+		JsonFactory f = new JsonFactory();
+		StringWriter sw = new StringWriter();
+		JsonGenerator g = f.createJsonGenerator(sw);
+	} 
+	
+}

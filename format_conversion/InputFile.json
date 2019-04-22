@@ -1,0 +1,29 @@
+{
+  "inputFile" : "InputFile.txt",
+  "references" : [ {
+    "colour" : "R",
+    "prize" : "45.12",
+    "size" : "27",
+    "numReference" : "1460100040"
+  }, {
+    "colour" : "G",
+    "prize" : "12.0",
+    "size" : "145",
+    "numReference" : "1460900848"
+  }, {
+    "colour" : "G",
+    "prize" : "5.56",
+    "size" : "19",
+    "numReference" : "1462100044"
+  }, {
+    "colour" : "B",
+    "prize" : "105.23",
+    "size" : "97",
+    "numReference" : "1462100403"
+  } ],
+  "errors" : [ {
+    "line" : "5",
+    "message" : "Incorrect Value for Colour",
+    "value" : "1462100403;A;100.1;9"
+  } ]
+}

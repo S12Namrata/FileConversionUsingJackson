@@ -1,0 +1,51 @@
+package format_conversion.utils;
+
+import format_conversion.datamodel.Colour;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Validations.
+ */
+public class Validations {
+
+	
+	/**
+	 * Validate colour.
+	 *
+	 * @param input the input
+	 * @return true, if successful
+	 */
+	public boolean validateColour(String input)
+	{
+		for (Colour colour : Colour.values()) {
+	        if (colour.name().equals(input)) {
+	            return true;
+	        }
+	    }
+		return false;
+	}
+	
+	/**
+	 * Validate prize.
+	 *
+	 * @param input the input
+	 * @return true, if successful
+	 */
+	public boolean validatePrize(String input)
+	{
+		String regex = "^([0-9]+((.)[0-9]{0,2}))";
+		return input.matches(regex);
+	}
+	
+	/**
+	 * Validate size.
+	 *
+	 * @param input the input
+	 * @return true, if successful
+	 */
+	public boolean validateSize(String input)
+	{
+		String regex = "[0-9]+";
+		return input.matches(regex);
+	}
+}

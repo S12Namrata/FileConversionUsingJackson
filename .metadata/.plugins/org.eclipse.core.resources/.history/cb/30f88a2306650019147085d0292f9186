@@ -1,0 +1,39 @@
+package format_conversion;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class readInputFile {
+
+	public void readFile()
+	{
+		
+		try 
+		{
+
+			File dir = new File(".");
+			File fileIn = new File(dir.getCanonicalPath() + File.separator + "InputFile.txt");
+			FileReader reader=new FileReader(fileIn);
+			
+			BufferedReader br = new BufferedReader(new FileReader(fileIn));
+			 
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+		 
+			br.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}
